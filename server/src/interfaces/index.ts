@@ -1,1 +1,1 @@
-export default {};
+export { IAgent } from "./mongoose.types"
