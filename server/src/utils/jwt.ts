@@ -25,10 +25,8 @@ export const verifyToken = (token: string | null = null, role: string | null = n
     switch (role) {
       case "MANAGER":
         return jwt.verify(token, process.env.SECRET_KEY_MANAGER as string);
-        break;
       case "ADMIN":
         return jwt.verify(token, process.env.SECRET_KEY_ADMIN as string);
-        break;
       default:
         return null;
     }

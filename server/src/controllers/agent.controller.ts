@@ -2,7 +2,7 @@ import { Agent } from "@models/Agent";
 import { createToken } from "@utils/index";
 import { Request, RequestHandler, Response } from "express";
 
-const loginAgent: RequestHandler = async (req : Request, res : Response) => {
+export const loginAgent: RequestHandler = async (req : Request, res : Response) => {
     const {
         email,
         password
@@ -13,7 +13,7 @@ const loginAgent: RequestHandler = async (req : Request, res : Response) => {
         if (!doc) {
             return res.status(404).json({
                 isLogged: false,
-                error: 'User not Found with this email@'
+                error: 'User not Found with this email'
             })
         }
         if (!doc.authenticate(password)) {
@@ -33,6 +33,29 @@ const loginAgent: RequestHandler = async (req : Request, res : Response) => {
             status: false,
             message: e.message
         });
+    }
+
+}
+
+export const registerAgent: RequestHandler = async (req : Request, res : Response) => {
+    const data = req.body
+
+    try {
+        const agent = new Agent(data);
+        await agent.save()
+
+        const docs = await Agent.find({});
+        console.log(docs);
+
+        res.status(201).json({
+            status: true,
+            message: { agent }
+        })
+    } catch (e: any) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
     }
 
 }
