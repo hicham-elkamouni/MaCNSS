@@ -1,1 +1,1 @@
-export { IAgent } from "./mongoose.types"
+export { IAgent, IRessource } from "./mongoose.types"
