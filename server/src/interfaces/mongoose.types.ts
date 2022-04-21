@@ -20,3 +20,13 @@ export interface IRessource extends Document {
     createdAt:Date
     updatedAt:Date
 }
+
+export interface IPatient extends Document {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    address: string;
+    city: string;
+    medicine: Object
+}
