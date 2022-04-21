@@ -1,1 +1,1 @@
-export default {};
+export { loginAgent, registerAgent } from "./agent.controller";
