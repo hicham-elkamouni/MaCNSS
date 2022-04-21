@@ -1,1 +1,1 @@
-export { IAgent, IRessource } from "./mongoose.types"
+export { IAgent, IRessource , IPatientFile } from "./mongoose.types"

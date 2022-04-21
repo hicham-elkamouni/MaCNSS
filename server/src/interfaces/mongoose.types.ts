@@ -21,11 +21,11 @@ export interface IRessource extends Document {
     updatedAt:Date
 }
 
-export interface IPatient extends Document {
+export interface IPatientFile extends Document {
     firstName: string;
     lastName: string;
     email: string;
-    phone: string;
+    phone: Number;
     address: string;
     city: string;
     medicine: Object
