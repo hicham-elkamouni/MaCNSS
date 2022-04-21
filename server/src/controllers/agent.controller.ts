@@ -1,8 +1,9 @@
 import { Agent } from "@models/Agent";
 import { createToken } from "@utils/index";
-import { Request, RequestHandler, Response } from "express";
+import { RequestHandler } from "express";
 
-export const loginAgent: RequestHandler = async (req : Request, res : Response) => {
+export const loginAgent : RequestHandler = async (req , res ) => {
+    console.log("inside loginAgent");
     const {
         email,
         password
@@ -37,7 +38,7 @@ export const loginAgent: RequestHandler = async (req : Request, res : Response) 
 
 }
 
-export const registerAgent: RequestHandler = async (req : Request, res : Response) => {
+export const registerAgent: RequestHandler = async (req , res ) => {
     const data = req.body
 
     try {

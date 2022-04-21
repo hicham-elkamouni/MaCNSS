@@ -9,11 +9,13 @@ const schema = new Schema<IAgent>(
             type: String,
             required: true,
             trim: true,
+            unique: true
         },
         email: {
             type: String,
             required: true,
             trim: true,
+            unique: true
         },
         hashed_password: {
             type: String,

@@ -4,12 +4,8 @@ export const createToken = (payload: any | null = null, role: string | null = nu
   if (!payload) return null;
   if (!role) return null;
   switch (role) {
-    case "MANAGER":
-      return jwt.sign({ payload }, process.env.SECRET_KEY_MANAGER as string, {
-        expiresIn: "1h",
-      });
-    case "ADMIN":
-      return jwt.sign({ payload }, process.env.SECRET_KEY_ADMIN as string, {
+    case "AGENT":
+      return jwt.sign({ payload }, process.env.SECRET_KEY_AGENT as string, {
         expiresIn: "1h",
       });
     default:

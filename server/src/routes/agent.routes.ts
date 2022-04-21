@@ -3,7 +3,7 @@ import {loginAgent, registerAgent} from "@controllers/index";
 
 const router = express.Router();
 
-router.get('/login', loginAgent);
+router.post('/login', loginAgent);
 router.post('/register', registerAgent);
 
 export { router };
