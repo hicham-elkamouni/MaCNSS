@@ -9,3 +9,14 @@ export interface IAgent extends Document {
     createdAt:Date
     updatedAt:Date
 }
+
+export interface IRessource extends Document {
+    type: string;
+    name : string;
+    description : string;
+    price : number;
+    refundable : boolean;
+    repaymentRate : number;
+    createdAt:Date
+    updatedAt:Date
+}
