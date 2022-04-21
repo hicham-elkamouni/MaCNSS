@@ -10,7 +10,6 @@ const schema = new Schema<IRessource>(
         },
         description : {
             type: String,
-            required: true,
             trim: true,
         },
         price : {
