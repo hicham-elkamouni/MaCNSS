@@ -45,9 +45,6 @@ export const registerAgent: RequestHandler = async (req , res ) => {
         const agent = new Agent(data);
         await agent.save()
 
-        const docs = await Agent.find({});
-        console.log(docs);
-
         res.status(201).json({
             status: true,
             message: { agent }
@@ -60,4 +57,3 @@ export const registerAgent: RequestHandler = async (req , res ) => {
     }
 
 }
-
