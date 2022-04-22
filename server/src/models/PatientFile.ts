@@ -32,7 +32,7 @@ const schema = new Schema<IPatientFile>(
             required: true,
             trim: true,
         },
-        medicine: [{
+        content: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Ressource',
         }],
