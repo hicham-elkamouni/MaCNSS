@@ -25,14 +25,28 @@ export const addMedicalFile: RequestHandler = async (req , res ) => {
 // get single patient file
 export const getPatientFile: RequestHandler = async (req , res ) => {
 
-    console.log("inside getSinglePatientFile");
     const id = req.params.id
 
     try {
-        const patientFile = await PatientFile.findById(id);
+
+        const patientFile = await PatientFile.findById(id).populate('content');
+        if(!patientFile) {
+            return res.status(404).json({
+                status: false,
+                message: 'Patient File not found'
+            })
+        }
+        const patientContent = patientFile?.content;
+        const patientContentArr = Object.values(patientContent)
+        let refundablePrice = 0; 
+        const refundableArr = patientContentArr.filter(item => {
+            refundablePrice += (item.price * item.repaymentRate)/100
+            return item.refundable === true
+        }) 
+    
         res.status(200).json({
             status: true,
-            message: patientFile 
+            message:  refundableArr
         })
     } catch (e: any) {
         res.status(400).json({
@@ -56,5 +70,18 @@ export const getAllPatientFiles: RequestHandler = async (req , res ) => {
             status: false,
             message: e.message
         })
+    }
+}
+
+export const calculateRepayment: RequestHandler = async (req , res ) => {
+
+    const id = req.params.id
+    try {
+        const result = await PatientFile.findById(id).populate('content');
+        console.log(result)
+        // content.filter( => {})
+
+    } catch (e: any) {
+        
     }
 }

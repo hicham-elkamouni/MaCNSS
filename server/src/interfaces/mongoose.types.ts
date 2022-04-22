@@ -28,5 +28,5 @@ export interface IPatientFile extends Document {
     phone: Number;
     address: string;
     city: string;
-    content: Object
+    content: Object 
 }
