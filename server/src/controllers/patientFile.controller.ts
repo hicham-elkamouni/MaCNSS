@@ -42,3 +42,19 @@ export const getPatientFile: RequestHandler = async (req , res ) => {
     }
 
 }
+
+// get all patient files
+export const getAllPatientFiles: RequestHandler = async (req , res ) => {
+    try {
+        const docs = await PatientFile.find({});
+        res.status(200).json({
+            status: true,
+            message: docs
+        })
+    } catch (e:any) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
