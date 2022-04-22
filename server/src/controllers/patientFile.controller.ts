@@ -21,3 +21,24 @@ export const addMedicalFile: RequestHandler = async (req , res ) => {
     }
 
 }
+
+// get single patient file
+export const getPatientFile: RequestHandler = async (req , res ) => {
+
+    console.log("inside getSinglePatientFile");
+    const id = req.params.id
+
+    try {
+        const patientFile = await PatientFile.findById(id);
+        res.status(200).json({
+            status: true,
+            message: patientFile 
+        })
+    } catch (e: any) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+
+}
