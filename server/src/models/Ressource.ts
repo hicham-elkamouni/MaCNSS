@@ -8,7 +8,7 @@ const schema = new Schema<IRessource>(
             required: true,
             trim: true,
         },
-        description : {
+        class : {
             type: String,
             required: true,
             trim: true,
@@ -17,12 +17,12 @@ const schema = new Schema<IRessource>(
             type: Number,
             required: true,
         },
-        refundable : {
-            type: Boolean,
-            required: true,
-        },
         repaymentRate : {
             type: Number,
+            required: true,
+        },
+        refundable : {
+            type: Boolean,
             required: true,
         },
     },

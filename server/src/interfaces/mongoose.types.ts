@@ -13,7 +13,7 @@ export interface IAgent extends Document {
 export interface IRessource extends Document {
     type: string;
     name : string;
-    description : string;
+    class : string;
     price : number;
     refundable : boolean;
     repaymentRate : number;
