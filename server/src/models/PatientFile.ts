@@ -40,4 +40,4 @@ const schema = new Schema<IPatientFile>(
     { timestamps: true }
 );
 
-export const Ressource = model<IPatientFile>("PatientFile", schema);
+export const PatientFile = model<IPatientFile>("PatientFile", schema);
