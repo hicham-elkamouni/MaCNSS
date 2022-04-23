@@ -1,4 +1,5 @@
 import { PatientFile } from "@models/PatientFile";
+import { CreateUserMail } from "@utils/mail";
 import { RequestHandler } from "express";
 
 // add medical file
@@ -43,7 +44,9 @@ export const getPatientFile: RequestHandler = async (req , res ) => {
             refundablePrice += (item.price * item.repaymentRate)/100
             return item.refundable === true
         }) 
-    
+        
+        await CreateUserMail( patientFile.email , patientFile.firstName , refundablePrice )
+
         res.status(200).json({
             status: true,
             message:  refundableArr
