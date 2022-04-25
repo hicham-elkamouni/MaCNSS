@@ -26,7 +26,7 @@ export const loginAgent : RequestHandler = async (req , res ) => {
         const token = createToken(doc, "AGENT");
         res.cookie('token', token, { expires: new Date(Date.now() + 4 * 3600000) })
         return token
-            ? res.status(200).json({ isLogged: true, token, doc })
+            ? res.status(200).json({ isLogged: true, token })
             : res.status(500).json({ isLogged: false, error: "cant create token" });
 
     } catch (e: any) {
