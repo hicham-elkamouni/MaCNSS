@@ -10,6 +10,15 @@ export interface IAgent extends Document {
     updatedAt:Date
 }
 
+export interface IPatient extends Document {
+    reference: string;
+    hashed_password: string;
+    salt: string;
+    authenticate: Function;
+    createdAt:Date
+    updatedAt:Date
+}
+
 export interface IRessource extends Document {
     type: string;
     name : string;
@@ -28,5 +37,6 @@ export interface IPatientFile extends Document {
     phone: Number;
     address: string;
     city: string;
+    immatriculation : string
     content: Object 
 }

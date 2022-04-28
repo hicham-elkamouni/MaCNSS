@@ -32,6 +32,10 @@ const schema = new Schema<IPatientFile>(
             required: true,
             trim: true,
         },
+        immatriculation: {
+            type: String,
+            required: true,
+        },
         content: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Ressource',

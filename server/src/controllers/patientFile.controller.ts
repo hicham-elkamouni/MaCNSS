@@ -1,6 +1,7 @@
 import { PatientFile } from "@models/PatientFile";
 import { CreateUserMail } from "@utils/mail";
 import { RequestHandler } from "express";
+import { v4 as uuidv4 } from 'uuid';
 
 // add medical file
 export const addMedicalFile: RequestHandler = async (req , res ) => {
@@ -72,6 +73,7 @@ export const calculateRepayment: RequestHandler = async (req , res ) => {
     try {
 
         const patientFile = await PatientFile.findById(id).populate('content');
+        
         if(!patientFile) {
             return res.status(404).json({
                 status: false,
@@ -81,7 +83,7 @@ export const calculateRepayment: RequestHandler = async (req , res ) => {
         const patientContent = patientFile?.content;
         const patientContentArr = Object.values(patientContent)
         let refundablePrice = 0; 
-        const refundableArr = patientContentArr.filter(item => {
+        patientContentArr.filter(item => {
             refundablePrice += (item.price * item.repaymentRate)/100
             return item.refundable === true
         }) 
@@ -90,7 +92,7 @@ export const calculateRepayment: RequestHandler = async (req , res ) => {
 
         res.status(200).json({
             status: true,
-            message:  refundableArr
+            message:  `this is your refundable price : ${refundablePrice} DH`
         })
     } catch (e: any) {
         res.status(400).json({
@@ -99,4 +101,21 @@ export const calculateRepayment: RequestHandler = async (req , res ) => {
         })
     }
 
+}
+
+//generate universal unique id
+export const generateUUID: RequestHandler = async (req , res ) => {
+    const uuidV4 = uuidv4();
+
+    try {
+        res.status(200).json({
+            status: true,
+            message:  uuidV4
+        })
+    } catch (e: any) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
 }
